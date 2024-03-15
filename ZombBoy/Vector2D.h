@@ -24,6 +24,8 @@ public:
     Vector2D operator-(const Vector2D& v) const;
     Vector2D operator*(float scalar) const;
     Vector2D operator+=(Vector2D& other);
+    Vector2D& operator+=(const Vector2D& other);
+
 };
 
 #endif // VECTOR2D_H

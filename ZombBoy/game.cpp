@@ -1,17 +1,22 @@
 #include "game.h"
 #include "player.h"
+#include "enemy.h"
 
 void Game::run() {
 
-    sf::RenderWindow window(sf::VideoMode(800, 800), "ZombBoy!");
+    sf::RenderWindow window(sf::VideoMode(800, 800), "ZombBoy");
     window.setFramerateLimit(60);
 
 
     Player player(Vector2D(300,300));
+    Zombie zomb(Vector2D(500, 500));
+
     sf::CircleShape shape(30.f);
+    sf::CircleShape enem(30.f);
 
 
     shape.setFillColor(sf::Color::Green);
+    enem.setFillColor(sf::Color::Red);
 
     while (window.isOpen())
     {
@@ -44,14 +49,21 @@ void Game::run() {
         }
 
 
+
         player.update();
+        zomb.chase(player);
+        zomb.update();
+
         shape.setPosition(player.position.x, player.position.y);
+        enem.setPosition(zomb.position.x, zomb.position.y);
+
+        //std::cout << zomb.position.x << " " << zomb.position.y << "\n";
+        //std::cout << zomb.getDir().x << " " << zomb.getDir().y << "\n";
 
         //drawing scene
         window.clear();
         window.draw(shape);
+        window.draw(enem);
         window.display();
-
-
     }
 }

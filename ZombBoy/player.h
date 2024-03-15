@@ -1,5 +1,5 @@
 #pragma once
-#include "Vector2D.h"
+#include "entity.h"
 
 enum stats
 {
@@ -11,7 +11,7 @@ enum stats
 };
 
 
-class Player
+class Player : public Entity
 {
 public:
 	Player();
@@ -30,10 +30,8 @@ public:
 
 	float x, y;
 
-	Vector2D position;
-	Vector2D velocity;
+	//Vector2D position;
+	//Vector2D velocity;
 
 	float move_speed = 0.5f;
-	float friction = 0.93f;
-
 };

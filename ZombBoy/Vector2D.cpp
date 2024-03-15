@@ -52,3 +52,11 @@ Vector2D Vector2D::operator+=(Vector2D& other) {
     // Return a reference to the current instance
     return *this;
 }
+
+Vector2D& Vector2D::operator+=(const Vector2D& other) {
+    x += other.x;
+    y += other.y;
+
+    // Return a reference to the current instance
+    return *this;
+}
