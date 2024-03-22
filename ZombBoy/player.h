@@ -21,6 +21,8 @@ public:
 
 	void update();
 
+	void initialize();
+
 	void move(Vector2D mov);
 
 	void spawn(int x, int y);

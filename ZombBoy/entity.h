@@ -4,23 +4,30 @@
 
 #include "Vector2D.h"
 #include "hitbox.h"
-
-//unsigned int globalEntityId = 1;
+#include "idGenerator.h"
+#include <string>
 
 class Entity {
 public:
-    int id;
+    int id = IDGenerator::getInstance().getNextID();
 
     Entity(float x = 0.0f, float y = 0.0f);
     virtual ~Entity(); // Make the destructor virtual
 
     void move(const Vector2D& direction);
     void setAncor(bool);
+
+    void damage(int value);
+
+    void setTexture(std::string pathToTexture);
+    std::string getTextureFile() const;
     
     void update();
     int setId(int id);
 
-    Vector2D getPosition();
+    bool checkCollision(Entity* other);
+
+    Vector2D getPosition() const;
 
     Vector2D position;
     Vector2D velocity;
@@ -30,9 +37,11 @@ public:
 
     Hitbox hitbox;
 
-protected:
+private:
     float health;
     bool ancor;
+    std::string texture;
+
 };
 
 #endif // ENTITY_H

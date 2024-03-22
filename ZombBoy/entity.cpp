@@ -1,11 +1,10 @@
 // Entity.cpp
 #include "Entity.h"
 
-Entity::Entity(float x, float y) : position(x, y), health(100), ancor(false) //, id(globalEntityId++)
+Entity::Entity(float x, float y) : position(x, y), health(100), ancor(false)
 {
     hitbox = Hitbox(position, Vector2D(50,50));
-
-
+    
 }
 
 Entity::~Entity() {
@@ -32,6 +31,11 @@ int Entity::setId(int _id)
     return this->id;
 }
 
+bool Entity::checkCollision(Entity* other)
+{
+    return hitbox.intersects(other->hitbox);
+}
+
 
 
 void Entity::setAncor(bool a)
@@ -39,7 +43,22 @@ void Entity::setAncor(bool a)
     ancor = a;
 }
 
-Vector2D Entity::getPosition()
+void Entity::damage(int value)
+{
+    health -= value;
+}
+
+void Entity::setTexture(std::string pathToTexture)
+{
+    texture = pathToTexture;
+}
+
+std::string Entity::getTextureFile() const
+{
+    return this->texture;
+}
+
+Vector2D Entity::getPosition() const
 {
     return this->position;
 }
