@@ -15,4 +15,7 @@ public:
 	sf::RenderWindow window;
 	InputManager inputManager;
 	GameRender gameRender;
+
+private:
+
 };

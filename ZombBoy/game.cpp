@@ -8,10 +8,13 @@ Game::Game() : window(sf::VideoMode(800, 800), "ZombBoy"), gameRender(window) {
 void Game::run() {
 
     auto player = std::make_shared<Player>(Vector2D(300, 300));
+    auto zombie = std::make_shared<Zombie>(Vector2D(500, 500));
+    zombie->chase(player);
     //Zombie zomb(Vector2D(500, 500));
     
     gameRender.addEntity(player);
-    //gameRender.addEntity(zomb);
+    gameRender.addEntity(zombie);
+
 
     while (gameRender.isOpen())
     {
@@ -42,7 +45,12 @@ void Game::run() {
             // Move player up
             player->move(Vector2D(player->move_speed, 0.f));
         }
+        if (inputManager.isKeyPressed(sf::Keyboard::H)) {
+            // Show Hitboxes
+            gameRender.hitbox_show = !gameRender.hitbox_show;
+        }
 
+        gameRender.updateGui(player->getHealth());
         gameRender.render();
 
 

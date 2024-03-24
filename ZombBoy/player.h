@@ -36,4 +36,9 @@ public:
 	//Vector2D velocity;
 
 	float move_speed = 0.5f;
+
+	float maxSpeed = 5.0f; // Maximum speed
+	float drag = 0.95f; // Drag factor for deceleration
+	float thrust = 0.1f; // Acceleration rate
+
 };

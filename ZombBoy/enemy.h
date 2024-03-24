@@ -13,6 +13,7 @@ public:
 	Vector2D getDir() const;
 
 	void chase(Entity* target);
+	void chase(std::shared_ptr<Entity> target);
 	void update();
 
 private:
@@ -20,8 +21,10 @@ private:
 	Vector2D dir = Vector2D(0,0);
 
 	int damage;
+	float damage_cooldown;
+	float damage_timer = 0.f;
 
-	Entity* target = nullptr;
+	std::shared_ptr<Entity> target = nullptr;
 
 	float move_speed;
 

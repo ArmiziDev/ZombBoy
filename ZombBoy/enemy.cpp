@@ -4,7 +4,11 @@ void Zombie::initialize()
 {
     move_speed = 0.001f;
     damage = 5;
-    setTexture("zombie.png");
+    damage_cooldown = 5.f;
+
+    setTexture("png/enemy_A.png");
+    setName("zombie");
+    set_color(0,0,255);
 }
 
 Zombie::Zombie(float x, float y)
@@ -24,9 +28,9 @@ Vector2D Zombie::getDir() const
     return dir;
 }
 
-void Zombie::chase(Entity* _target)
+void Zombie::chase(std::shared_ptr<Entity> _target)
 {
-    target = _target;
+    target = _target; 
 }
 
 void Zombie::update()
@@ -45,9 +49,20 @@ void Zombie::update()
         this->dir = dir; // Assuming this->dir is a Vector2D member variable of Zombie
         position += (dir);
 
+        rotation = (std::atan2(dir.y, dir.x) * 180.0f / 3.1415) + 90.0f;
+
+
+        Entity::update();
+
         if (checkCollision(target))
         {
-            target->damage(damage);
+            damage_timer += 0.1f;
+            if (damage_timer >= damage_cooldown) {
+                target->damage(damage);
+                damage_timer = 0.f;
+            }
+
+
         }
     }
 }
