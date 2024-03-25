@@ -151,6 +151,7 @@
     <ClCompile Include="player.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="Vector2D.cpp" />
+    <ClCompile Include="weapons.cpp" />
     <ClCompile Include="ZombBoy.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -162,9 +163,11 @@
     <ClInclude Include="idGenerator.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="player.h" />
+    <ClInclude Include="projectile.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Vector2D.h" />
+    <ClInclude Include="weapons.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

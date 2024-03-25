@@ -12,10 +12,11 @@ public:
 
 	void run();
 
+
 	sf::RenderWindow window;
 	InputManager inputManager;
 	GameRender gameRender;
 
 private:
-
+	
 };
